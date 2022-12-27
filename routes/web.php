@@ -11,3 +11,7 @@ Route::get('/', [WebController::class, 'index'])->name('index');
 Route::resource('cards', CardController::class);
 Route::resource('words', WordController::class);
 Route::resource('example', ExampleController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
