@@ -18,17 +18,18 @@ class Card extends Model
 
     protected $fillable = [
         'name',
+        'user_id',
     ];
 
     public function words(): HasMany
     {
-        return $this->hasMany(Word::class, 'project_id');
+        return $this->hasMany(Word::class, 'card_id', 'id');
     }
 
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 }

@@ -16,10 +16,18 @@ class WordController extends Controller
      */
     public function index(Card $card)
     {
+        $cardId = null;
+
+        $words = Card::find($card->id)->words;
+
+        if (count($words) != 0) {
+            $cardId = $words[0]->project_id;
+        }
 
         return view('web.words.index',
             [
-                'words' => Card::find($card->id)->words,
+                'cardId' => $cardId,
+                'words' => $words,
             ]
         );
     }
@@ -33,7 +41,7 @@ class WordController extends Controller
     {
         return view('web.words.add',
             [
-                'card_id' => $card->id
+                'cardId' => $card
             ]
         );
     }
@@ -44,7 +52,7 @@ class WordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Card $card, Request $request)
     {
         Word::create($request->all());
         return redirect()->route('index');

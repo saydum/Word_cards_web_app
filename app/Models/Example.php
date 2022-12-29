@@ -19,6 +19,6 @@ class Example extends Model
 
     public function word(): BelongsTo
     {
-        return $this->belongsTo(Word::class);
+        return $this->belongsTo(Word::class, 'word_id', 'id');
     }
 }

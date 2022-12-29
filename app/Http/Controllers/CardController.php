@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\User;
 use App\Models\Word;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class CardController extends Controller
     {
         return view('web.cards.index',
         [
-            'cards' => Card::all(),
+            'cards' => User::find(auth()->user()->getAuthIdentifier())->cards()-get(),
         ]);
     }
 
@@ -40,7 +41,10 @@ class CardController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        Card::create($request->all());
+        Card::create([
+            'name' => $request->input('name'),
+            'user_id' => auth()->user()->getAuthIdentifier(),
+        ]);
         return redirect()->route('index');
     }
 

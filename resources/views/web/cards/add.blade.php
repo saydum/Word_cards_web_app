@@ -7,9 +7,10 @@
         <div class="row">
             <div class="col">
                 <label>Название карточки</label>
-                <input type="text" class="form-control" placeholder="English" aria-label="name" name="name">
+                <input type="text" class="form-control" placeholder="Английский язык" aria-label="name" name="name">
             </div>
         </div>
+        <input hidden="hidden" type="text" name="user_id">
         <div class="py-4">
             <button class="btn btn-primary">Добавить</button>
         </div>

@@ -21,17 +21,17 @@ class Word extends Model
         'value',
         'transcript',
         'translate',
-        'project_id', // card_id
+        'card_id',
         'status',
     ];
 
     public function card(): BelongsTo
     {
-        return $this->belongsTo(Card::class);
+        return $this->belongsTo(Card::class, 'card_id', 'id');
     }
 
     public function examples(): HasMany
     {
-        return $this->hasMany(Example::class);
+        return $this->hasMany(Example::class, 'word_id', 'id');
     }
 }
