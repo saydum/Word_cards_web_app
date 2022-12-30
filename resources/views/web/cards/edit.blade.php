@@ -1,16 +1,30 @@
 @extends('web.layout')
 
 @section('content')
-<h3 style="padding-bottom: 15px">Изменить название карточки</h3>
-<form action="{{ route('cards.update', $card->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    <div class="row">
-        <div class="col">
-            <label>Название карточки</label>
-            <input type="text" class="form-control" aria-label="name" name="name" value="{{ $card->name }}">
+    <h3 style="padding-bottom: 15px">Добавить новое слово</h3>
+    <form action="{{ route('words.store') }}" method="POST">
+        @csrf
+        <div class="row">
+            <div class="col">
+                <label>Новое слово</label>
+                <input type="text" class="form-control" placeholder="Слово" aria-label="value" name="value">
+            </div>
+            <div class="col">
+                <label>Транскрипт <code>Не обязательно</code></label>
+                <input type="text" class="form-control" placeholder="Транскрипция" aria-label="transcript" name="transcript">
+            </div>
+            <div class="col">
+                <label>Перевод</label>
+                <input type="text" class="form-control" placeholder="Перевод" aria-label="translate" name="translate">
+            </div>
+            <input type="text" hidden="hidden" name="card_id" value="{{ $cardId }}">
         </div>
-    </div>
-    <input hidden="hidden" type="text" value="{{ $card->user_id }}" name="user_id">
-</form>
+        <div class="row py-4">
+            <div class="col mb-3">
+                <div class="py-4">
+                    <button class="btn btn-success">Добавить</button>
+                </div>
+            </div>
+        </div>
+    </form>
 @endsection

@@ -40,7 +40,7 @@ class ExampleController extends Controller
     public function store(Request $request)
     {
         Example::create($request->all());
-        return redirect()->route('example.index');
+        return redirect()->route('index');
     }
 
     /**
@@ -51,16 +51,7 @@ class ExampleController extends Controller
      */
     public function show(Example $example)
     {
-        return view('web.example.show',
-            [
-                'example' => Word::find($example->id),
-            ]
-        );
-        return view('web.words.index',
-            [
-                'words' => Card::find($card->id)->words,
-            ]
-        );
+        //TODO
     }
 
     /**

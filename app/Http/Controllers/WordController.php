@@ -6,6 +6,7 @@ use App\Models\Card;
 use App\Models\Example;
 use App\Models\Word;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WordController extends Controller
 {
@@ -16,20 +17,7 @@ class WordController extends Controller
      */
     public function index(Card $card)
     {
-        $cardId = null;
 
-        $words = Card::find($card->id)->words;
-
-        if (count($words) != 0) {
-            $cardId = $words[0]->project_id;
-        }
-
-        return view('web.words.index',
-            [
-                'cardId' => $cardId,
-                'words' => $words,
-            ]
-        );
     }
 
     /**
@@ -39,22 +27,23 @@ class WordController extends Controller
      */
     public function create(Card $card)
     {
-        return view('web.words.add',
-            [
-                'cardId' => $card
-            ]
-        );
+        return view('web.words.add');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @TODO
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Card $card, Request $request)
+    public function store(Request $request)
     {
-        Word::create($request->all());
+        Word::create([
+            'value' => $request->input('value'),
+            'transcript' => $request->input('transcript'),
+            'translate' => $request->input('translate'),
+            'card_id' => $request->input('card_id'),
+        ]);
         return redirect()->route('index');
     }
 
@@ -66,9 +55,15 @@ class WordController extends Controller
      */
     public function show(Word $word)
     {
+        $example = null;
+
+        foreach ($word->examples as $item) {
+            $example = $item->text;
+        }
         return view('web.words.show',
             [
                 'word' => $word,
+                'example' => $example,
             ]
         );
     }

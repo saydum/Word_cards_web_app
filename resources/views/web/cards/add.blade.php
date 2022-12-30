@@ -10,7 +10,9 @@
                 <input type="text" class="form-control" placeholder="Английский язык" aria-label="name" name="name">
             </div>
         </div>
-        <input hidden="hidden" type="text" name="user_id">
+        <label>
+            <input type="text" hidden="hidden" name="user_id" value="{{ auth()->id() }}">
+        </label>
         <div class="py-4">
             <button class="btn btn-primary">Добавить</button>
         </div>

@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 /**
  * @property mixed $id
  * @property mixed $text
+ * @property mixed $examples
  */
 class Word extends Model
 {

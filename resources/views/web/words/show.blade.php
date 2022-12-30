@@ -3,7 +3,7 @@
 @section('content')
 
     <h4>
-        <a class="btn btn-outline-primary" href="{{ redirect()->back()->getTargetUrl() }}">Назад</a>
+        <a class="btn btn-outline-primary" href="{{ route('cards.show', $word->card->id) }}">Назад</a>
         Слово:
         <span class="text-muted">{{ $word->value }}</span>
     </h4>
@@ -25,14 +25,32 @@
             </tr>
         </tbody>
     </table>
-    <div class="py-4">
-        <h5 class="text-muted">Примеры:</h5>
-        <p class="lead">
-            @foreach(\App\Models\Word::find($word->id)->examples as $example)
-                {!! $example->text !!}
-            @endforeach
-        </p>
-    </div>
+    @if(!empty($word->examples))
+        <div class="py-4">
+            <h5 class="text-muted">Примеры:</h5>
+            <div class="alert alert-success" role="alert" style="font-size: 18px">
+                @foreach($word->examples as $example)
+                    {!! $example->text !!}
+                @endforeach
+            </div>
+        </div>
+    @else
+        <div class="py-4">
+            <h5 class="text-muted">Добавить пример:</h5>
+            <form action="{{ route('example.store') }}" method="POST">
+                @csrf
+                <input type="text"
+                       class="form-control"
+                       aria-label="text"
+                       name="text">
+                <label>
+                    <input type="text" hidden="hidden" name="word_id" value="{{ $word->id }}">
+                </label>
+                <br>
+                <button type="submit" class="btn btn-success">Добавить</button>
+            </form>
+        </div>
+    @endif
     <a class="btn btn-outline-success" href="{{ route('words.edit', $word->id) }}">Изменить</a>
     <form style="display: inline-block" action="{{ route('words.destroy', $word->id) }}" method="POST">
         @csrf

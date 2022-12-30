@@ -1,11 +1,12 @@
 @extends('web.layout')
 
 @section('content')
-    <a href="{{ route('words.create') }}" class="btn btn-primary float-end" style="margin-bottom: 10px">Добавить</a>
+    <a href="{{ route('cards.edit', $cardId) }}" class="btn btn-primary float-end" style="margin-bottom: 10px">Добавить</a>
+    <p>Кол-во слов: <b>{{ $countWords }}</b></p>
     <table class="table table-hover table-bordered">
         <thead>
         <tr>
-            <th scope="col">ID</th>
+            <th scope="col">№</th>
             <th scope="col">Слово</th>
             <th scope="col">Транскрипт</th>
             <th scope="col">Перевод</th>
@@ -16,7 +17,7 @@
         <tbody>
             @foreach($words as $word)
                 <tr>
-                    <th scope="row">{{ $word->id }}</th>
+                    <th scope="row">{{ $counter++ }}</th>
                     <td>{{ $word->value }}</td>
                     <td>{{ $word->transcript }}</td>
                     <td>{{ $word->translate }}</td>

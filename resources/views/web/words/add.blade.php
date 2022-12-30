@@ -18,8 +18,6 @@
             <input type="text" class="form-control" placeholder="Перевод" aria-label="translate" name="translate">
         </div>
     </div>
-    <input hidden="hidden" type="text" value="{{ $cardId }}" name="project_id">
-
     <div class="row py-4">
         <div class="col mb-3">
             <div class="py-4">
