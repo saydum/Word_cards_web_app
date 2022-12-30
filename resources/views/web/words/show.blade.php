@@ -25,13 +25,11 @@
             </tr>
         </tbody>
     </table>
-    @if(!empty($word->examples))
+    @if($example)
         <div class="py-4">
             <h5 class="text-muted">Примеры:</h5>
             <div class="alert alert-success" role="alert" style="font-size: 18px">
-                @foreach($word->examples as $example)
-                    {!! $example->text !!}
-                @endforeach
+                {{ $example }}
             </div>
         </div>
     @else
