@@ -21,7 +21,11 @@
                 <td>{{ $word->value }}</td>
                 <td>{{ $word->transcript }}</td>
                 <td>{{ $word->translate }}</td>
-                <td class="text-danger">Не изучен!</td>
+                @if($word->status)
+                    <td class="text-success">Изучен!</td>
+                @else
+                    <td class="text-danger">Не изучен!</td>
+                @endif
             </tr>
         </tbody>
     </table>

@@ -92,11 +92,15 @@ class WordController extends Controller
      */
     public function update(Request $request, Word $word)
     {
-        Example::create([
-            'text' => $request->input('text'),
-            'word_id' => $word->id,
+        $status = ($request->input('status')) ? 1 : 0;
+
+        $word->update([
+            'value' => $request->input('value'),
+            'transcript' => $request->input('transcript'),
+            'translate' => $request->input('translate'),
+            'card_id' => $word->card->id,
+            'status' => $status,
         ]);
-        $word->update($request->all());
         return redirect()->route('index');
     }
 

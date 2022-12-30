@@ -23,14 +23,32 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col">
+                <div class="form-check form-switch py-3" style="font-size: 18px">
+                    <input
+                        name="status"
+                        class="form-check-input"
+                        type="checkbox"
+                        role="switch"
+                        id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Изучен</label>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="row py-4">
             <div class="col mb-3">
+                @foreach($word->examples as $example)
                 <label for="exampleFormControlTextarea1" class="form-label">Примеры предложении с новым словом</label>
-                <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3">
-                    {{ $word->text }}
+                <textarea style="font-size: 18px" name="text" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $example->text }}
                 </textarea>
-                <div class="py-4">
-                    <button class="btn btn-success">Добавить</button>
+                @endforeach
+
+                <div class="py-3">
+                    <button class="btn btn-primary">Изменить</button>
                 </div>
             </div>
         </div>
