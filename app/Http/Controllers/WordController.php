@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\Example;
 use App\Models\Word;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +18,22 @@ class WordController extends Controller
      */
     public function index(Card $card)
     {
+        $counter = 1;
+        $countWords = Word::where('card_id', '=', $card->id)->get();
+
+        return view('web.words.index',
+            [
+                'words' => $card->words()->get(),
+                'cardId' => $card->id,
+                'countWords' => $countWords->count(),
+                'counter' => $counter,
+            ]
+        );
 
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -44,7 +59,7 @@ class WordController extends Controller
             'translate' => $request->input('translate'),
             'card_id' => $request->input('card_id'),
         ]);
-        return redirect()->route('index');
+        return redirect()->route('cards.show', $request->input('card_id'));
     }
 
     /**
@@ -101,7 +116,7 @@ class WordController extends Controller
             'card_id' => $word->card->id,
             'status' => $status,
         ]);
-        return redirect()->route('index');
+        return redirect()->route('cards.show', $word->card->id);
     }
 
     /**
@@ -110,7 +125,7 @@ class WordController extends Controller
      * @param  \App\Models\Word  $word
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Word $word): \Illuminate\Http\RedirectResponse
+    public function destroy(Word $word): RedirectResponse
     {
         $word->delete();
         return redirect()->route('index');

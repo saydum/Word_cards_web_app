@@ -14,7 +14,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Главное</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('cards.create') }}" class="nav-link">Добавить карточку</a>
+                        <a href="{{ route('cards.index') }}" class="nav-link">Карточки</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="#">FAQ</a>

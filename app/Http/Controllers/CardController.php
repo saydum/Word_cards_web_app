@@ -25,7 +25,7 @@ class CardController extends Controller
 
         return view('web.cards.index',
         [
-            'cards' => User::find(auth()->id())->cards()-get(),
+            'cards' => User::find(auth()->id())->cards,
         ]);
     }
 
@@ -62,15 +62,14 @@ class CardController extends Controller
      */
     public function show(Card $card)
     {
-        $counter = 1;
-        $countWords = Word::where('card_id', '=', $card->id)->get();
-
         return view('web.words.index',
             [
                 'words' => $card->words()->get(),
                 'cardId' => $card->id,
-                'countWords' => $countWords->count(),
-                'counter' => $counter,
+                'countWords' => $card->words()->count(),
+                'counter' => 1,
+                'finish' => $card->finish,
+                'progress' => $card->words()->where('status','=', '1')->count(),
             ]
         );
     }

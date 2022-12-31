@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property mixed $id
+ * @property mixed $finish
  */
 class Card extends Model
 {
@@ -19,6 +20,7 @@ class Card extends Model
     protected $fillable = [
         'name',
         'user_id',
+        'finish',
     ];
 
     public function words(): HasMany

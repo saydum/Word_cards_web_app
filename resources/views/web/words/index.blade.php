@@ -1,17 +1,29 @@
 @extends('web.layout')
 
 @section('content')
-    <div class="py-3">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    @if($finish > 0)
+        <h5 class="text-end">Цель: {{ $finish }}</h5>
+        <div class="py-3">
+            <div class="progress">
+                <div class="progress-bar bg-success"
+                     role="progressbar"
+                     aria-label="Example with label"
+                     style="width: {{ $progress }}%;"
+                     aria-valuenow="{{ $progress }}"
+                     aria-valuemin="0"
+                     aria-valuemax="{{ $finish }}"
+                >
+                {{ $progress }}
+                </div>
+            </div>
         </div>
-    </div>
+    @endif
 
     <a href="{{ route('cards.edit', $cardId) }}" class="btn btn-primary float-end" style="margin-bottom: 10px">Добавить</a>
     <p>
         | Кол-во слов: <b>{{ $countWords }}</b> |
-        <span class="text-success"> Изучено: <b>2</b></span> |
-        <span class="text-danger"> Не изучено: <b>1</b></span> |
+        <span class="text-success"> Изучено: <b>{{ $progress }}</b></span> |
+        <span class="text-danger"> Не изучено: <b>{{ $countWords - $progress }}</b></span> |
     </p>
     <table class="table table-hover table-bordered">
         <thead>

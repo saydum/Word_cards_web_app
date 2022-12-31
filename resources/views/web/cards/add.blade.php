@@ -9,6 +9,10 @@
                 <label>Название карточки</label>
                 <input type="text" class="form-control" placeholder="Английский язык" aria-label="name" name="name">
             </div>
+            <div class="col">
+                <label>Цель</label>
+                <input type="number" class="form-control" placeholder="500" name="finish">
+            </div>
         </div>
         <label>
             <input type="text" hidden="hidden" name="user_id" value="{{ auth()->id() }}">
