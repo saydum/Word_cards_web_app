@@ -31,13 +31,12 @@
                         class="form-check-input"
                         type="checkbox"
                         role="switch"
-                        id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Изучен</label>
+                        {{ ($word->status) ? "checked" : "" }}
+                        >
+                    <label class="form-check-label">Изучен!</label>
                 </div>
             </div>
         </div>
-
-
 
         <div class="row py-4">
             <div class="col mb-3">
