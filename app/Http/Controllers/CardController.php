@@ -50,6 +50,7 @@ class CardController extends Controller
         Card::create([
             'name' => $request->input('name'),
             'user_id' => $request->input('user_id'),
+            'finish' => $request->input('finish'),
         ]);
         return redirect()->route('index');
     }

@@ -107,6 +107,8 @@ class WordController extends Controller
      */
     public function update(Request $request, Word $word)
     {
+        Example::where('word_id', '=', $word->id)->update(['text' => $request->input('text')]);
+        
         $status = ($request->input('status')) ? 1 : 0;
 
         $word->update([
