@@ -1,7 +1,7 @@
 @extends('web.layout')
 
 @section('content')
-    @if($finish > 0)
+    @if($finish)
         <h5 class="text-end">Цель: {{ $finish }}</h5>
         <div class="py-3">
             <div class="progress">
@@ -13,7 +13,7 @@
                      aria-valuemin="0"
                      aria-valuemax="{{ $finish }}"
                 >
-                {{ $progress }}
+                <span style="font-size: 13px">{{ $progress }} %</span>
                 </div>
             </div>
         </div>

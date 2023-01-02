@@ -9,9 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -20,24 +19,34 @@
 
     @include('web.embed.header')
 
-    <main class="py-4">
 
-        <section class="py-5">
-            <div class="container">
-                <div class="row">
-                    @auth()
+
+    @auth()
+        <main class="py-4">
+            <section class="py-5">
+                <div class="container">
+                    <div class="row">
                     @include('web.embed.sidebar')
-                    @endauth
-                    <!-- Content -->
-                    <div class="col-md-10 justify-content-center">
-                        @yield('content')
+                        <div class="col-md-10 justify-content-center">
+                            @yield('content')
+                        </div>
                     </div>
-
                 </div>
-            </div>
-        </section>
-
-    </main>
+            </section>
+        </main>
+    @else
+        <main>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    @endauth
 
     @include('web.embed.footer')
 </div>
