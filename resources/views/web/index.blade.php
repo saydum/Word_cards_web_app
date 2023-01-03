@@ -20,7 +20,7 @@
                         <h1 class="display-4 fw-normal">Карточки со словами!</h1>
                         <h4 class="fw-normal">Самое простое приложение для сохранения и изучения новых слом.</h4>
                     </div>
-                    <a class="btn btn-outline-primary " href="{{ route('cards.index') }}">Начать</a>
+                    <a class="btn btn-outline-primary btn-lg" href="{{ route('cards.index') }}">Начать</a>
                 </div>
             </div>
         </div>
