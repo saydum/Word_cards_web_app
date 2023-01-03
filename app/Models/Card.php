@@ -15,7 +15,7 @@ class Card extends Model
 {
     use HasFactory;
 
-    protected $table = "cards";
+    protected $table = 'cards';
 
     protected $fillable = [
         'name',
@@ -28,10 +28,8 @@ class Card extends Model
         return $this->hasMany(Word::class, 'card_id', 'id');
     }
 
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
 }

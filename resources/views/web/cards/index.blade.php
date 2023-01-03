@@ -8,6 +8,7 @@
         <tr>
             <th scope="col">№</th>
             <th scope="col">Название</th>
+            <th scope="col">Цель</th>
             <th scope="col" class="text-end">Действие</th>
         </tr>
         </thead>
@@ -16,7 +17,9 @@
             <tr>
                 <th scope="row">{{ $c->id }}</th>
                 <td>{{ $c->name }}</td>
+                <td>{{ $c->finish }}</td>
                 <td class="text-end">
+                    <a class="btn btn-outline-primary" href="{{ route('cards.show', $c->id) }}">Открыть</a>
                     <form style="display: inline-block" action="{{ route('cards.destroy', $c->id) }}" method="POST">
                         @csrf
                         @method('DELETE')

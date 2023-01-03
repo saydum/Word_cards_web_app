@@ -3,20 +3,20 @@
 @section('content')
     @if($finish)
         <h5 class="text-end">Цель: {{ $finish }}</h5>
-        <div class="py-3">
-            <div class="progress">
-                <div class="progress-bar bg-success"
-                     role="progressbar"
-                     aria-label="Example with label"
-                     style="width: {{ $progress }}%;"
-                     aria-valuenow="{{ $progress }}"
-                     aria-valuemin="0"
-                     aria-valuemax="{{ $finish }}"
-                >
-                <span style="font-size: 13px">{{ $progress }} %</span>
-                </div>
-            </div>
-        </div>
+{{--        <div class="py-3">--}}
+{{--            <div class="progress">--}}
+{{--                <div class="progress-bar bg-success"--}}
+{{--                     role="progressbar"--}}
+{{--                     aria-label="Example with label"--}}
+{{--                     style="width: {{ $progress }}%;"--}}
+{{--                     aria-valuenow="{{ $progress }}"--}}
+{{--                     aria-valuemin="0"--}}
+{{--                     aria-valuemax="{{ $finish }}"--}}
+{{--                >--}}
+{{--                <span style="font-size: 13px">{{ $progress }} %</span>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
     @endif
 
     <a href="{{ route('cards.edit', $cardId) }}" class="btn btn-primary float-end" style="margin-bottom: 10px">Добавить</a>

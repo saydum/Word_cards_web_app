@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\User;
-use App\Models\Word;
+use function auth;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use function auth;
 
 class CardController extends Controller
 {
@@ -22,11 +21,10 @@ class CardController extends Controller
      */
     public function index()
     {
-
         return view('web.cards.index',
-        [
-            'cards' => User::find(auth()->id())->cards,
-        ]);
+            [
+                'cards' => User::find(auth()->id())->cards,
+            ]);
     }
 
     /**
@@ -42,7 +40,7 @@ class CardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return RedirectResponse
      */
     public function store(Request $request): RedirectResponse
@@ -52,13 +50,14 @@ class CardController extends Controller
             'user_id' => $request->input('user_id'),
             'finish' => $request->input('finish'),
         ]);
+
         return redirect()->route('index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Card $card
+     * @param  Card  $card
      * @return Application|Factory|View
      */
     public function show(Card $card)
@@ -70,7 +69,7 @@ class CardController extends Controller
                 'countWords' => $card->words()->count(),
                 'counter' => 1,
                 'finish' => $card->finish,
-                'progress' => $card->words()->where('status','=', '1')->count(),
+                'progress' => $card->words()->where('status', '=', '1')->count(),
             ]
         );
     }
@@ -78,7 +77,7 @@ class CardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Card $card
+     * @param  Card  $card
      * @return Application|Factory|View
      */
     public function edit(Card $card)
@@ -94,26 +93,27 @@ class CardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param Card $card
+     * @param  Request  $request
+     * @param  Card  $card
      * @return RedirectResponse
      */
     public function update(Request $request, Card $card)
     {
         $card->update($request->all());
-        return redirect()->route('cards.index');
 
+        return redirect()->route('cards.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Card $card
+     * @param  Card  $card
      * @return RedirectResponse
      */
     public function destroy(Card $card): RedirectResponse
     {
         $card->delete();
+
         return redirect()->route('cards.index');
     }
 }

@@ -3,34 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Example;
-use App\Models\Word;
 use Illuminate\Http\Request;
 
 class ExampleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function index()
-    {
-        return view('web.example.index',
-            [
-                'example' => Example::all(),
-            ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function create()
-    {
-        return view('web.example.add');
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -40,33 +16,8 @@ class ExampleController extends Controller
     public function store(Request $request)
     {
         Example::create($request->all());
-        return redirect()->route('index');
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Example  $example
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function show(Example $example)
-    {
-        //TODO
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Example  $example
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(Example $example)
-    {
-        return view('web.example.edit',
-            [
-                'example' => $example,
-            ]
-        );
+        return redirect()->route('words.show', $request->input('word_id'));
     }
 
     /**
@@ -79,6 +30,7 @@ class ExampleController extends Controller
     public function update(Request $request, Example $example)
     {
         $example->update($request->all());
+
         return redirect()->route('example.index');
     }
 
@@ -91,6 +43,7 @@ class ExampleController extends Controller
     public function destroy(Example $example)
     {
         $example->delete();
+
         return redirect()->route('example.index');
     }
 }

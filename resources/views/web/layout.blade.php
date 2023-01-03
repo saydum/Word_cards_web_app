@@ -10,23 +10,22 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
 <div id="app">
 
-    @include('web.embed.header')
-
-
+    @include('web._embed.header')
 
     @auth()
         <main class="py-4">
             <section class="py-5">
                 <div class="container">
-                    <div class="row">
-                    @include('web.embed.sidebar')
+                    <div class="row justify-content-center">
+                            @include('web._embed.sidebar')
                         <div class="col-md-10 justify-content-center">
                             @yield('content')
                         </div>
@@ -48,7 +47,7 @@
         </main>
     @endauth
 
-    @include('web.embed.footer')
+    @include('web._embed.footer')
 </div>
 </body>
 </html>

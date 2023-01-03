@@ -1,22 +1,32 @@
 @extends('web.layout')
-
+<style>
+    .myCard {
+        background: #e8e8e8;
+        text-align: center;
+    }
+    .myCard {
+        background: white;
+        display: inline-block;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        border-radius: 5px;
+    }
+</style>
 @section('content')
     <main>
-        <div class="row">
-            <div class="col-md-8">
+        <div class="row justify-content-end">
+            <div class="col-md">
                 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-                    <div class="col-md-8 p-lg-5 mx-auto my-5">
+                    <div class="col-md mx-auto my-5">
                         <h1 class="display-4 fw-normal">Карточки со словами!</h1>
-                        <p class="lead fw-normal">Самое простое приложение для сохранения и изучение новых слом.</p>
-                        <a class="btn btn-outline-primary " href="{{ route('cards.index') }}">Начать</a>
+                        <h4 class="fw-normal">Самое простое приложение для сохранения и изучения новых слом.</h4>
                     </div>
-                    <div class="product-device shadow-sm d-none d-md-block"></div>
-                    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+                    <a class="btn btn-outline-primary " href="{{ route('cards.index') }}">Начать</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <img src="https://i.pinimg.com/originals/5e/8c/3a/5e8c3aed42b5ce88f8c6866cd798cf36.png">
-            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col myCard">
+                <img src="{{ asset('img/main.png') }}" alt="Карточки со словами!">
             </div>
         </div>
     </main>

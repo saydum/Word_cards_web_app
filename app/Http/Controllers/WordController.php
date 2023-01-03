@@ -7,7 +7,6 @@ use App\Models\Example;
 use App\Models\Word;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class WordController extends Controller
 {
@@ -29,25 +28,23 @@ class WordController extends Controller
                 'counter' => $counter,
             ]
         );
-
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create(Card $card)
+    public function create()
     {
         return view('web.words.add');
     }
 
     /**
      * Store a newly created resource in storage.
+     *
      * @TODO
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -59,6 +56,7 @@ class WordController extends Controller
             'translate' => $request->input('translate'),
             'card_id' => $request->input('card_id'),
         ]);
+
         return redirect()->route('cards.show', $request->input('card_id'));
     }
 
@@ -75,6 +73,7 @@ class WordController extends Controller
         foreach ($word->examples as $item) {
             $example = $item->text;
         }
+
         return view('web.words.show',
             [
                 'word' => $word,
@@ -108,7 +107,7 @@ class WordController extends Controller
     public function update(Request $request, Word $word)
     {
         Example::where('word_id', '=', $word->id)->update(['text' => $request->input('text')]);
-        
+
         $status = ($request->input('status')) ? 1 : 0;
 
         $word->update([
@@ -118,7 +117,8 @@ class WordController extends Controller
             'card_id' => $word->card->id,
             'status' => $status,
         ]);
-        return redirect()->route('cards.show', $word->card->id);
+
+        return redirect()->route('words.show', $word->id);
     }
 
     /**
@@ -130,6 +130,7 @@ class WordController extends Controller
     public function destroy(Word $word): RedirectResponse
     {
         $word->delete();
+
         return redirect()->route('index');
     }
 }
