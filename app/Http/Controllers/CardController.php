@@ -60,13 +60,18 @@ class CardController extends Controller
      * @param  Card  $card
      * @return Application|Factory|View
      */
-    public function show(Card $card)
+    public function show(Request $request, Card $card)
     {
+        $inputGetCountWords = $request->input('getCountWords');
+
+        $getCountWords = ((!$inputGetCountWords) ? 15 : $request->input('getCountWords'));
+
         return view('web.words.index',
             [
-                'words' => $card->words()->get(),
+                'words' => $card->words()->take($getCountWords)->get(),
                 'cardId' => $card->id,
                 'countWords' => $card->words()->count(),
+                'getCountWords' => $getCountWords,
                 'counter' => 1,
                 'finish' => $card->finish,
                 'progress' => $card->words()->where('status', '=', '1')->count(),

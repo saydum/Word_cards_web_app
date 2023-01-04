@@ -30,8 +30,8 @@
         <tr>
             <th scope="col">№</th>
             <th scope="col">Слово</th>
-            <th scope="col">Транскрипт</th>
             <th scope="col">Перевод</th>
+            <th scope="col">Транскрипт</th>
             <th scope="col">Статус</th>
             <th scope="col">Примеры</th>
         </tr>
@@ -41,8 +41,8 @@
                 <tr>
                     <th scope="row">{{ $counter++ }}</th>
                     <td>{{ $word->value }}</td>
-                    <td>{{ $word->transcript }}</td>
                     <td>{{ $word->translate }}</td>
+                    <td>{{ $word->transcript }}</td>
                     @if($word->status)
                         <td class="text-success">Изучен!</td>
                     @else
@@ -55,4 +55,11 @@
             @endforeach
         </tbody>
     </table>
+    <form class="row text-center py-4" action="{{ route('cards.show', $cardId) }}" method="get">
+        @csrf
+        <div class="col">
+            <input type="text" hidden="hidden" value="{{ $getCountWords += 15 }}" name="getCountWords">
+            <button id="submit" type="submit" class="btn btn-outline-primary btn-lg">Загрузить еще</button>
+        </div>
+    </form>
 @endsection
