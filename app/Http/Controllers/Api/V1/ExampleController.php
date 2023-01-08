@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Example;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ExampleController extends Controller
@@ -11,11 +12,12 @@ class ExampleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $exampleWords = Example::all()->take(10);
+        return response()->json($exampleWords, 200);
     }
 
     /**

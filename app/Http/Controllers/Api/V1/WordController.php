@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Word;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class WordController extends Controller
@@ -11,11 +12,12 @@ class WordController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|JsonResponse|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $words = Word::all()->take(10);
+        return response()->json($words, 200);
     }
 
     /**

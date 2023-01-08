@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\Card;
+use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -11,11 +13,13 @@ class CardController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $cards = User::find(1)->cards;
+        return response()->json($cards, 200);
+
     }
 
     /**
@@ -37,7 +41,7 @@ class CardController extends Controller
      */
     public function show(Card $card)
     {
-        //
+
     }
 
     /**
