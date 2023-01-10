@@ -1,25 +1,23 @@
 <?php
 
+use App\Http\Controllers\Api\V1\Auth\AuthController;
 use App\Http\Controllers\Api\V1\CardController;
 use App\Http\Controllers\Api\V1\ExampleController;
 use App\Http\Controllers\Api\V1\WordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-Route::resource('cards', CardController::class);
-Route::resource('words', WordController::class);
-Route::resource('examples', ExampleController::class);
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('me', [AuthController::class, 'me']);
+});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::resource('cards.api', CardController::class);
+Route::resource('words.api', WordController::class);
+Route::resource('examples.api', ExampleController::class);
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
