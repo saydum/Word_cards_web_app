@@ -4,6 +4,7 @@ use App\Http\Controllers\CardController;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\WordController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -15,3 +16,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Auth::routes();
+Route::get('/', [HomeController::class, 'index'])->name('index');
