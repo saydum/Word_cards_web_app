@@ -10,7 +10,7 @@
                 <input type="text" class="form-control" placeholder="Английский язык" aria-label="name" name="name">
             </div>
             <div class="col">
-                <label>Цель</label>
+                <label>Цель <code>Не обязательно</code></label>
                 <input type="number" class="form-control" placeholder="500" name="finish">
             </div>
         </div>

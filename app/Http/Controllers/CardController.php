@@ -45,10 +45,15 @@ class CardController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $finish = 0;
+        if ($request->input('finish')) {
+            $finish = $request->input('finish');
+        }
+
         Card::create([
             'name' => $request->input('name'),
             'user_id' => $request->input('user_id'),
-            'finish' => $request->input('finish'),
+            'finish' => $finish,
         ]);
 
         return redirect()->route('index');

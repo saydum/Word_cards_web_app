@@ -50,10 +50,15 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
+        $translate = "";
+        if ($request->input('translate')) {
+            $translate = $request->input('translate');
+        }
+
         Word::create([
             'value' => $request->input('value'),
             'transcript' => $request->input('transcript'),
-            'translate' => $request->input('translate'),
+            'translate' => $translate,
             'card_id' => $request->input('card_id'),
         ]);
 

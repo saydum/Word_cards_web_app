@@ -10,12 +10,12 @@
                 <input type="text" class="form-control" placeholder="Слово" aria-label="value" name="value">
             </div>
             <div class="col">
-                <label>Транскрипт <code>Не обязательно</code></label>
-                <input type="text" class="form-control" placeholder="Транскрипция" aria-label="transcript" name="transcript">
+                <label>Перевод <code>Не обязательно</code></label>
+                <input type="text" class="form-control" placeholder="Перевод" aria-label="translate" name="translate">
             </div>
             <div class="col">
-                <label>Перевод</label>
-                <input type="text" class="form-control" placeholder="Перевод" aria-label="translate" name="translate">
+                <label>Транскрипт <code>Не обязательно</code></label>
+                <input type="text" class="form-control" placeholder="Транскрипция" aria-label="transcript" name="transcript">
             </div>
             <input type="text" hidden="hidden" name="card_id" value="{{ $cardId }}">
         </div>
