@@ -25,33 +25,31 @@
         <span class="text-success"> Изучено: <b>{{ $progress }}</b></span> |
         <span class="text-danger"> Не изучено: <b>{{ $countWords - $progress }}</b></span> |
     </p>
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered table-sm">
         <thead>
         <tr>
             <th scope="col">№</th>
             <th scope="col">Слово</th>
             <th scope="col">Перевод</th>
-            <th scope="col">Транскрипт</th>
-            <th scope="col">Статус</th>
-            <th scope="col">Примеры</th>
         </tr>
         </thead>
         <tbody>
             @foreach($words as $word)
-                <tr>
-                    <th scope="row">{{ $counter++ }}</th>
-                    <td>{{ $word->value }}</td>
-                    <td>{{ $word->translate }}</td>
-                    <td>{{ $word->transcript }}</td>
-                    @if($word->status)
-                        <td class="text-success">Изучен!</td>
-                    @else
-                        <td class="text-danger">Не изучен!</td>
-                    @endif
-                    <td>
-                        <a href="{{ route('words.show', $word->id) }}" class="btn btn-outline-primary">Посмотреть</a>
-                    </td>
-                </tr>
+
+                    <tr>
+                        <th scope="row">{{ $counter++ }}</th>
+                        <td>
+                            <a href="{{ route('words.show', $word->id) }}" class="nav-link">
+                                {{ $word->value }}
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="{{ route('words.show', $word->id) }}" class="nav-link">
+                                {{ $word->translate }}
+                            </a>
+                        </td>
+                    </tr>
             @endforeach
         </tbody>
     </table>

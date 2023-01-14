@@ -14,7 +14,7 @@
             <input type="text" class="form-control" placeholder="Транскрипция" aria-label="transcript" name="transcript">
         </div>
         <div class="col">
-            <label>Перевод</label>
+            <label>Перевод <code>Не обязательно</code></label>
             <input type="text" class="form-control" placeholder="Перевод" aria-label="translate" name="translate">
         </div>
     </div>

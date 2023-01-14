@@ -14,6 +14,8 @@
           rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
 <div id="app">
@@ -25,8 +27,7 @@
             <section class="py-5">
                 <div class="container">
                     <div class="row justify-content-center">
-                            @include('web._embed.sidebar')
-                        <div class="col-md-10 justify-content-center">
+                        <div class="col-sm">
                             @yield('content')
                         </div>
                     </div>

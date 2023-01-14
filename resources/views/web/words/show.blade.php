@@ -7,7 +7,7 @@
         Слово:
         <span class="text-muted">{{ $word->value }}</span>
     </h4>
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered table-sm">
         <thead>
         <tr>
             <th scope="col">Слово</th>
