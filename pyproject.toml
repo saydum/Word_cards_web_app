@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "word-cards-ru"
+name = "wc-drf"
 version = "0.1.0"
 description = ""
 authors = ["Saydum Khalibekov <saydum.it5@gmail.com>"]
 readme = "README.md"
-packages = [{include = "word_cards_ru"}]
+packages = [{include = "wc_drf"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
