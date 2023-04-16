@@ -15,5 +15,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('example', ExampleController::class);
 });
 
-Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Auth::routes();
