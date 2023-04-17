@@ -24,10 +24,10 @@
                 </div>
             </div>
         </div>
-{{--        <div class="row justify-content-center">--}}
-{{--            <div class="col myCard">--}}
-{{--                <img class="img-fluid" src="{{ asset('img/main.png') }}" alt="Карточки со словами!">--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="row justify-content-center">
+            <div class="col myCard">
+                <img class="img-fluid" src="{{ asset('img/main.png') }}" alt="Карточки со словами!">--}}
+            </div>
+        </div>
     </main>
 @endsection
