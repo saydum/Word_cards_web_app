@@ -18,6 +18,13 @@
             <input type="text" class="form-control" placeholder="Перевод" aria-label="translate" name="translate">
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <label>Примеры</label>
+            <textarea style="font-size: 18px" name="text" class="form-control" rows="3">
+            </textarea>
+        </div>
+    </div>
     <div class="row py-4">
         <div class="col mb-3">
             <div class="py-4">

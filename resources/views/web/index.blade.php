@@ -17,8 +17,8 @@
             <div class="col-md">
                 <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
                     <div class="col-md mx-auto my-5">
-                        <h1 class="display-4 fw-normal">Карточки со словами!</h1>
-                        <h4 class="fw-normal">Самое простое приложение для сохранения и изучения новых слом.</h4>
+                        <h1 class="display-4 fw-normal">Все просто!</h1>
+                        <h4 class="fw-normal">Самое простое приложение для сохранения и изучения новых слов.</h4>
                     </div>
                     <a class="btn btn-outline-primary btn-lg" href="{{ route('cards.index') }}">Начать</a>
                 </div>

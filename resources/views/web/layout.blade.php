@@ -22,31 +22,20 @@
 
     @include('web._embed.header')
 
-    @auth()
         <main class="py-4">
             <section class="py-5">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-sm">
+                        <div class="col-md-2">
+                            @include("web._embed.sidebar")
+                        </div>
+                        <div class="col-md-10">
                             @yield('content')
                         </div>
                     </div>
                 </div>
             </section>
         </main>
-    @else
-        <main>
-            <section>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md">
-                            @yield('content')
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    @endauth
 
     @include('web._embed.footer')
 </div>
