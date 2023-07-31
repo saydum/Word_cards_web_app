@@ -13,25 +13,27 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($cards as $c)
-            <tr>
-                <th scope="row">{{ $c->id }}</th>
-                <td>{{ $c->name }}</td>
-                <td>{{ $c->finish }}</td>
-                <td class="text-end">
-                    <a class="btn text-success" href="{{ route('cards.show', $c->id) }}">
-                        Открыть
-                    </a>
-                    <form style="display: inline-block" action="{{ route('cards.destroy', $c->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn text-danger" type="submit" onclick="alert('Подтвердите действие'); return true;">
-                            Удалить
-                        </button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
+        @if(isset($cards))
+            @foreach($cards as $c)
+                <tr>
+                    <th scope="row">{{ $c->id }}</th>
+                    <td>{{ $c->name }}</td>
+                    <td>{{ $c->finish }}</td>
+                    <td class="text-end">
+                        <a class="btn text-success" href="{{ route('cards.show', $c->id) }}">
+                            Открыть
+                        </a>
+                        <form style="display: inline-block" action="{{ route('cards.destroy', $c->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn text-danger" type="submit" onclick="alert('Подтвердите действие'); return true;">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        @endif
         </tbody>
     </table>
 @endsection

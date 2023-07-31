@@ -11,13 +11,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Главное</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('cards.index') }}" class="nav-link">Карточки</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">FAQ</a>
+                        <a href="{{ route('cards.index') }}" class="nav-link">Все карточки</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

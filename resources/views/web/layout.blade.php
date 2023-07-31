@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Самое простое приложение для сохранения и изучения новых слов.</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -22,20 +22,36 @@
 
     @include('web._embed.header')
 
-        <main class="py-4">
-            <section class="py-5">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-2">
-                            @include("web._embed.sidebar")
-                        </div>
-                        <div class="col-md-10">
-                            @yield('content')
+        @guest
+            <main class="py-4">
+                <section class="py-5">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                @yield('content')
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
+        @endguest
+
+        @auth
+            <main class="py-4">
+                <section class="py-5">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-2">
+                                @include("web._embed.sidebar")
+                            </div>
+                            <div class="col-md-10">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        @endauth
 
     @include('web._embed.footer')
 </div>

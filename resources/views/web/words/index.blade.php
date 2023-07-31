@@ -34,8 +34,8 @@
         </tr>
         </thead>
         <tbody>
-            @foreach($words as $word)
-
+            @if(isset($words))
+                @foreach($words as $word)
                     <tr>
                         <th scope="row">{{ $counter++ }}</th>
                         <td>
@@ -50,7 +50,8 @@
                             </a>
                         </td>
                     </tr>
-            @endforeach
+                @endforeach
+            @endif
         </tbody>
     </table>
 
