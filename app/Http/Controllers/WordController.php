@@ -50,18 +50,7 @@ class WordController extends Controller
      */
     public function store(Request $request)
     {
-        $translate = "";
-        if ($request->input('translate')) {
-            $translate = $request->input('translate');
-        }
-
-        Word::create([
-            'value' => $request->input('value'),
-            'transcript' => $request->input('transcript'),
-            'translate' => $translate,
-            'card_id' => $request->input('card_id'),
-        ]);
-
+        Word::create($request->all());
         return redirect()->route('cards.show', $request->input('card_id'));
     }
 
@@ -135,7 +124,6 @@ class WordController extends Controller
     public function destroy(Word $word): RedirectResponse
     {
         $word->delete();
-
-        return redirect()->route('index');
+        return redirect()->back();
     }
 }

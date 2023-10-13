@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('value', 55);
             $table->string('transcript', 55)->nullable();
-            $table->string('translate', 55);
+            $table->string('translate', 55)->nullable();
             $table->foreignId('card_id')->constrained()->onDelete('cascade');
             $table->boolean('status')->default(0);
             $table->timestamps();

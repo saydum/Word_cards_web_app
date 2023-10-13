@@ -6,17 +6,16 @@
     "scripts": {
         "start": "electron .",
         "dev": "vite",
-        "build": "vite build"
-    },
-    "dependencies": {
-        "electron": "^16.0.0"
+        "build-vite": "vite build",
+        "build": "electron-builder"
     },
     "private": true,
-
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
-        "axios": "^1.1.2",
         "bootstrap": "^5.2.3",
+        "electron": "^16.2.8",
+        "electron-builder": "^24.6.4",
+        "electron-packager": "^17.1.2",
         "laravel-vite-plugin": "^0.7.4",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",

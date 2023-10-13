@@ -8,7 +8,9 @@ function createWindow() {
         height: 600,
     });
 
-    mainWindow.loadURL('http://localhost:8000/');
+    mainWindow.loadURL('http://localhost:8082/'); // Укажите URL вашего Laravel-приложения
+
+    mainWindow.setMenu(null);
 
     mainWindow.on('closed', () => {
         mainWindow = null;
