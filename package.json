@@ -1,9 +1,18 @@
 {
-    "private": true,
+    "name": "word-cards",
+    "version": "1.0.0",
+    "description": "Word cards application",
+    "main": "main.js",
     "scripts": {
+        "start": "electron .",
         "dev": "vite",
         "build": "vite build"
     },
+    "dependencies": {
+        "electron": "^16.0.0"
+    },
+    "private": true,
+
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
         "axios": "^1.1.2",
