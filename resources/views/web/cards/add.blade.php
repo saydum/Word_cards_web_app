@@ -14,9 +14,6 @@
                 <input type="number" class="form-control" placeholder="500" name="finish">
             </div>
         </div>
-        <label>
-            <input type="text" hidden="hidden" name="user_id" value="{{ auth()->id() }}">
-        </label>
         <div class="py-4">
             <button class="btn btn-primary">Добавить</button>
         </div>

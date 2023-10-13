@@ -26,13 +26,13 @@
         <div class="row">
             <div class="col">
                 <div class="form-check form-switch py-3" style="font-size: 18px">
-                    <input
-                        name="status"
-                        class="form-check-input"
-                        type="checkbox"
-                        role="switch"
-                        {{ ($word->status) ? "checked" : "" }}
-                        >
+                        <input
+                            name="status"
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            {{ ($word->status) ? "checked" : "" }}
+                            >
                     <label class="form-check-label">Изучен!</label>
                 </div>
             </div>

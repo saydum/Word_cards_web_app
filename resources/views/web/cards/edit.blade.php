@@ -17,7 +17,6 @@
                 <label>Транскрипт <code>Не обязательно</code></label>
                 <input type="text" class="form-control" placeholder="Транскрипция" aria-label="transcript" name="transcript">
             </div>
-
             {{-- @TODO исправь передачи id из формы--}}
             <input type="text" hidden="hidden" name="card_id" value="{{ $cardId }}">
         </div>

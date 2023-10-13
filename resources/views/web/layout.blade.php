@@ -9,51 +9,44 @@
 
     <title>Самое простое приложение для сохранения и изучения новых слов.</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet">
-    <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-icons.css') }}">
 </head>
 <body>
 <div id="app">
 
     @include('web._embed.header')
 
-        @guest
-            <main class="py-4">
-                <section class="py-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col">
-                                @yield('content')
-                            </div>
-                        </div>
+    <main class="py-4">
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-start">
+                    <div class="col-md-2">
+                        <h4 class="text-muted">Карточки</h4>
+                        <nav class="navbar bg-white card mt-3">
+                            <ul class="list-group">
+                                @foreach(\App\Models\Card::all() as $card)
+                                    @if(isset($card))
+                                        <tr>
+                                            <td>
+                                                <a class="nav-link" aria-current="page" href="{{ route('cards.show', $card->id) }}">
+                                                    {{ $card->name }}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </nav>
                     </div>
-                </section>
-            </main>
-        @endguest
-
-        @auth
-            <main class="py-4">
-                <section class="py-5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-2">
-                                @include("web._embed.sidebar")
-                            </div>
-                            <div class="col-md-10">
-                                @yield('content')
-                            </div>
-                        </div>
+                    <div class="col-md-10">
+                        @yield('content')
                     </div>
-                </section>
-            </main>
-        @endauth
-
-    @include('web._embed.footer')
+                </div>
+            </div>
+        </section>
+    </main>
 </div>
 </body>
 </html>

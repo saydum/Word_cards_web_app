@@ -14,16 +14,16 @@
         </thead>
         <tbody>
         @if(isset($cards))
-            @foreach($cards as $c)
+            @foreach($cards as $card)
                 <tr>
-                    <th scope="row">{{ $c->id }}</th>
-                    <td>{{ $c->name }}</td>
-                    <td>{{ $c->finish }}</td>
+                    <th scope="row">{{ $card->id }}</th>
+                    <td>{{ $card->name }}</td>
+                    <td>{{ $card->finish }}</td>
                     <td class="text-end">
-                        <a class="btn text-success" href="{{ route('cards.show', $c->id) }}">
+                        <a class="btn text-success" href="{{ route('cards.show', $card->id) }}">
                             Открыть
                         </a>
-                        <form style="display: inline-block" action="{{ route('cards.destroy', $c->id) }}" method="POST">
+                        <form style="display: inline-block" action="{{ route('cards.destroy', $card->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn text-danger" type="submit" onclick="alert('Подтвердите действие'); return true;">

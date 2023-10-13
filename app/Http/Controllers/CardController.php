@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
-use App\Models\User;
-use function auth;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -21,10 +19,8 @@ class CardController extends Controller
      */
     public function index()
     {
-        return view('web.cards.index',
-            [
-                'cards' => User::find(auth()->id())->cards,
-            ]);
+        $cards = Card::all();
+        return view('web.cards.index', compact('cards'));
     }
 
     /**
@@ -52,7 +48,6 @@ class CardController extends Controller
 
         Card::create([
             'name' => $request->input('name'),
-            'user_id' => $request->input('user_id'),
             'finish' => $finish,
         ]);
 
