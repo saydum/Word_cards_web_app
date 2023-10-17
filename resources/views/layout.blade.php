@@ -24,7 +24,7 @@
             </div>
 
             <div class="flex-none w-14 h-14">
-                <button class="btn btn-outline btn-success" onclick="my_modal_1.showModal()">Добавить</button>
+                <button class="btn btn-outline btn-success ml-4" onclick="my_modal_1.showModal()">Добавить</button>
                 <dialog id="my_modal_1" class="modal">
                     <div class="modal-box">
                         <h3 class="font-bold text-lg">Выберите то что необходимо!</h3>
