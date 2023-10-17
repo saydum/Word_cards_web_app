@@ -20,7 +20,7 @@ class WordController extends Controller
         $counter = 1;
         $countWords = Word::where('card_id', '=', $card->id)->get();
 
-        return view('web.words.index',
+        return view('words.index',
             [
                 'words' => $card->words()->get(),
                 'cardId' => $card->id,
@@ -37,7 +37,7 @@ class WordController extends Controller
      */
     public function create()
     {
-        return view('web.words.add');
+        return view('words.add');
     }
 
     /**
@@ -68,7 +68,7 @@ class WordController extends Controller
             $example = $item->text;
         }
 
-        return view('web.words.show',
+        return view('words.show',
             [
                 'word' => $word,
                 'example' => $example,
@@ -84,7 +84,7 @@ class WordController extends Controller
      */
     public function edit(Word $word)
     {
-        return view('web.words.edit',
+        return view('words.edit',
             [
                 'word' => $word,
             ]

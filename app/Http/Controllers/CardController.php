@@ -20,7 +20,7 @@ class CardController extends Controller
     public function index()
     {
         $cards = Card::all();
-        return view('web.cards.index', compact('cards'));
+        return view('cards.index', compact('cards'));
     }
 
     /**
@@ -30,7 +30,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('web.cards.add');
+        return view('cards.add');
     }
 
     /**
@@ -66,7 +66,7 @@ class CardController extends Controller
 
         $getCountWords = ((!$inputGetCountWords) ? 15 : $request->input('getCountWords'));
 
-        return view('web.words.index',
+        return view('words.index',
             [
                 'words' => $card->words()->take($getCountWords)->get(),
                 'cardId' => $card->id,
@@ -87,7 +87,7 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        return view('web.cards.edit',
+        return view('cards.edit',
             [
                 'card' => $card,
                 'cardId' => $card->id,
